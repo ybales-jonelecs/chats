@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Messenger</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .section-title {
+      display:flex; align-items:center; justify-content:space-between;
+      margin:18px 0 8px; font-size:14px;
+    }
+    .user { display:flex; align-items:center; gap:10px; }
+    .user-main { flex:1; min-width:0; }
+    .user-main b { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .user-action {
+      border:0; border-radius:8px; padding:7px 10px; cursor:pointer;
+      font-size:12px; background:#fff; color:#111;
+    }
+    .chat-action { background:#222; color:#fff; }
+    .empty-small { padding:10px 4px; opacity:.65; font-size:12px; }
+    #friends, #users { display:flex; flex-direction:column; gap:6px; }
+  </style>
+</head>
+
+<body>
+  <div id="authScreen" class="auth-screen">
+    <div class="auth-card">
+      <h1>Messenger</h1>
+      <p>Connect with your friends</p>
+
+      <div class="tabs">
+        <button id="loginTab" class="active">Login</button>
+        <button id="registerTab">Register</button>
+      </div>
+
+      <form id="authForm">
+        <input id="name" class="hidden" placeholder="Full name" autocomplete="name">
+        <input id="email" type="email" placeholder="Email" required autocomplete="email">
+        <input id="password" type="password" placeholder="Password" required autocomplete="current-password">
+        <button class="primary" id="authButton">Login</button>
+      </form>
+
+      <div id="authError"></div>
+    </div>
+  </div>
+
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="me">
+        <div id="myAvatar" class="avatar">U</div>
+        <div>
+          <b id="myName">User</b>
+          <small><i></i> Online</small>
+        </div>
+        <button id="logout">Logout</button>
+      </div>
+
+      <input id="search" class="search" placeholder="Search users">
+
+      <div class="section-title"><h3>Friends</h3></div>
+      <div id="friends"></div>
+
+      <div class="section-title"><h3>Find People</h3></div>
+      <div id="users"></div>
+    </aside>
+
+    <main class="chat">
+      <header id="chatHeader">
+        <span>Select a friend to start chatting</span>
+      </header>
+
+      <section id="messages" class="messages">
+        <div class="empty">
+          <strong>💬</strong>
+          <h2>Welcome to Messenger</h2>
+          <p>Create an account, add a friend, and start chatting in real time.</p>
+        </div>
+      </section>
+
+      <form id="messageForm" class="composer hidden">
+        <input type="file" id="fileInput" hidden>
+        <button type="button" id="fileButton">📎</button>
+        <button type="button" id="imageButton">🖼️</button>
+        <input id="message" placeholder="Type a message..." autocomplete="off">
+        <button class="send">➤</button>
+      </form>
+    </main>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
